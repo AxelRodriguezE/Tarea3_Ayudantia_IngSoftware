@@ -1,4 +1,4 @@
-\documentclass[a4paper,11pt]{report}
+\documentclass[a4paper,10pt]{report}
 %
 %--------------------   start of the 'preamble'
 %
@@ -7,6 +7,7 @@
 \usepackage{hyperref}
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
+
 \hypersetup{
     colorlinks,
     citecolor=black,
@@ -29,14 +30,15 @@
 %
 \begin{document}
 %-----------------------------------------------------------
-\title{Patrones de Diseño}
+\title{\textbf{Tarea 3\\Patrones de Diseño\\}Ayudantía de Ingeniería de Software}
 \author{Axel Rodríguez Espinoa\\
         Nicolas Oyarzún Hernandez\\
         Pedro Salas Vergara}
 \maketitle
 
+
 %-----------------------------------------------------------
-\title {\textbf{PATRONES DE DISEÑO DE SOFTWARE}}\\
+\title {\textbf{PATRONES DE DISEÑO DE SOFTWARE}}\\\\
 
 \title{\textbf{Introducción}}\\
 
@@ -44,11 +46,11 @@ El diseño es un modelo del sistema, realizado con una serie de principios y té
 
 \title{\textbf{Antecedentes}}\\
 
-El concepto de "patrón de diseño" que tenemos en Ingeniería del Software se ha tomado prestado de la arquitectura. En 1977 se publica el libro "A Pattern Language: Towns/Building/Construction", de Christopher Alexander, Sara Ishikawa, Murray Silverstein, Max Jacobson, Ingrid Fiksdahl-King y Shlomo Angel, Oxford University Press. Contiene numerosos patrones con una notación específica de Alexander.\\
+El concepto de "patrón de diseño" que tenemos en Ingeniería del Software se ha tomado prestado de la arquitectura. En 1977 se publica el libro "A Pattern Language: Towns/Building/Construction". Contiene numerosos patrones con una notación específica de Christopher Alexander.\\
 
 Alexander comenta que “Cada patrón describe un problema que ocurre una y otra vez en nuestro entorno, para describir después el núcleo de la solución a ese problema, de tal manera que esa solución pueda ser usada más de un millón de veces sin hacerlo siquiera dos veces de la misma forma”. El patrón es un esquema de solución que se aplica a un tipo de problema, esta aplicación del patrón no es mecánica, sino que requiere de adaptación y matices. Por ello, dice Alexander que los numerosos usos de un patrón no se repiten dos veces de la misma forma.\\
 
-La idea de patrones de diseño estaba "en el aire", la prueba es que numerosos diseñadores se dirigieron a aplicar las ideas de Alexander a su contexto. El catálogo más famoso de patrones se encuentra en “Design Patterns: Elements of Reusable Object-Oriented Software”, de Erich Gamma, Richard Helm, Ralph Johnson y John Vlissides, 1995, Addison-Wesley, también conocido como el libro GOF (Gang-Of-Four).\\
+La idea de patrones de diseño estaba " en el aire", la prueba es que numerosos diseñadores se dirigieron a aplicar las ideas de Alexander a su contexto. El catálogo más famoso de patrones se encuentra en “Design Patterns: Elements of Reusable Object-Oriented Software”, de Erich Gamma, Richard Helm, Ralph Johnson y John Vlissides, 1995, Addison-Wesley, también conocido como el libro GOF (Gang-Of-Four).\\
 
 Siguiendo el libro de GOF los patrones se clasifican según el proposito para el que han sido definidos:\\
 
@@ -73,68 +75,63 @@ Los patrones de diseño son descripciones de clases cuyas instancias colaboran e
     \item{Participantes (responsabilidad de cada clase) }
     \item{Colaboraciones (diagrama de interacciones) }
     \item{Colaboraciones (diagrama de interacciones) }
-    \item{Otros patrones con los que está relacionado }
+    \item{Otros patrones con los que está relacionado\\ }
 \end{itemize}
 
 
 \title{\textbf{Ventajas de los patrones de diseño}}\\
 
-La clave para la reutilización es anticiparse a los nuevos requisitos y cambios, de modo que los sistemas evolucionen de forma adecuada. Cada patrón permite que algunos aspectos de la estructura del sistema puedan cambiar independientemente de otros aspectos. Facilitan la reusabilidad, extensibilidad y mantenimiento.\\
-Un patrón es un esquema o microarquitectura que supone una solución a problemas (dominios de aplicación) semejantes. Interesa constatar una vez más la vieja distinción entre dominio del problema (donde aparecen las clases propias del dominio, como cuenta, empleado, coche o beneficiario) y el dominio de la solución o aplicación (donde además aparecen clases como ventana, menú, contenedor o listener). Los patrones son patrones del dominio de la solución.\\
-También conviene distinguir entre un patrón y una arquitectura global del sistema. Por decirlo en breve, es la misma distancia que hay entre el diseño de un componente (o módulo) y el análisis del sistema. Es la diferencia que hay entre el aspecto micro y el macro, por ello, en ocasiones se denomina a los patrones como "microarquitecturas".
-En resumen, un patrón es el denominador común, una estructura común que tienen aplicaciones semejantes. Esto también ocurre en otros ordenes de la vida. Por ejemplo, en nuestra vida cotidiana aplicamos a menudo el esquema saludo-presentación-mensaje-despedida en ocasiones diversas, que van desde un intento de ligar hasta dar una conferencia (si todavía no cree que existan patrones o que no son útiles intente ligar con el esquema despedida-mensaje-presentación-saludo, a ver que ocurre).
-
-\title{\textbf{Clasificación de patrones}}\\
+La clave para la reutilización es anticiparse a los nuevos requisitos y cambios, de modo que los sistemas evolucionen de forma adecuada. Cada patrón permite que algunos aspectos de la estructura del sistema puedan cambiar independientemente de otros aspectos. Facilitan la reusabilidad, extensibilidad y mantenimiento.\\\\
 
 
+\title{\textbf{Patrón Mediador (Mediator)\\}}
 
-\title{\textbf{EL patron de diseño que vamos a ejemplificar}}\\
+El mediador o intermediario es un patrón de comportamiento que encapsula la forma en que interaccionan un conjunto de objetos ("colegas"). Es el especialista que define las interdependencias entre ellos. Favorece un bajo acoplamiento, ya que evita que los objetos se referencien unos a otros de forma explícita. Permite variar la interacción sin tocar los colegas, por tanto favorece la reutilización.\\
+
+Cuando muchos objetos interactúan con otros objetos, se puede formar una estructura muy compleja, con objetos con muchas conexiones con otros objetos. En un caso extremo cada objeto puede conocer a todos los demás objetos.\\
 
 
+Participantes:\\
 
 
+\textbf{Mediator}: Define una interface para comunicarse con los objetos colegas.\\
 
+\textbf{ConcreteMediator}: Implementa el comportamiento cooperativo entre los colegas (como se comunican entre ellos). Además los conoce y mantiene.\\
 
+\textbf{Colleagues}: Cada colega conoce su mediador, y usa a este para comunicarse con otros colegas.\\
+
+Ventajas:
 \begin{itemize}
-    \item{Modelo}
-    \item{Vista}
-    \item{Controlador}
+\item{Evita crear subclases}
+\item{Desacopla a los colegas} 
+\item{Simplifica los protocolos entre las clases}
+\item{Abstrae el cómo cooperan los objetos}
+\item{Centraliza el control en el mediador: clase difícil de mantener\\}
 \end{itemize}
 
-\begin{figure}[!ht]
-\begin{center}
 
-\caption{MVC aplicado en un software}
-\end{center}
-\end{figure}
+\title{\textbf{Ejemplo de Mediador (Mediator)}}\\
 
 
- \newpage
-La capa de modelo mapea los datos de la aplicación; en está es en la que almacenaremos datos para buscar/inserción/eliminación y/o modificación.
-La capa del controlador es muy importante para este patrón de diseño, ya que es la
-que maneja la lógica con la que se manipulan los datos (Es decir se relaciona íntimamente con
-la capa modelo) y a su vez interactúa con la capa vista, mostrando al cliente la representación de los datos según sus peticiones.\\
+En el caso de la comunicación que tienen los militantes en un partido político. Todas estas organizaciones tienen distintos delegados de territorio o de sectores determinados (p.ej. en la comuna de Ñuñoa, en un espacio educacional como CONFECH, sindicatos, entre otros) que deben informar a todo el partido la actualidad con respecto al contexto en su área y a su vez deben estar informados en torno a las labores que se realizan dentro de la organización.\\
 
-\title {\textbf{ EJEMPLO DE MVC}}\\
+Existe el comando del partido, que se encarga de recepcionar la información que reportan los militantes de los diversos territorios, sectores, etc. Luego de tenerla en su poder la transmite a las demás, con el objetivo de mantener informados a todos los militantes del partido.\\
 
-\underline{Problema:} Realizar la venta de un producto en una tienda.
+En este caso los participantes son:\\
 
-\underline{Aplicación del patrón MVC al problema de la tienda:}
+\textbf{Mediator}: El comando del partido.
 
-En este problema podemos mapear las 3 capas de MVC a la tienda, teniendo lo siguiente:
+\textbf{ConcreteMediator}: Mecanismo de recepción por parte del comando de información de los militantes de un área y de difusión de la información a las demás áreas.
 
-\begin{itemize}
-    \item{Modelo:} Libro de ventas, productos de la tienda, etc. 
-    \item{Vista:} Estantes con productos, precio de los productos.
-    \item{Controlador:} Vendedor realizando ventas, vendedor realizando boletas.
-\end{itemize}
+\textbf{Colleagues}: Militantes del partido de un territorio o sector determinado.\\
 
-El cliente solicitará al vendedor que le venda un producto (Una frucola grande),
-a lo que el vendedor le dirá que esta tiene un precio de \$350 y le pedirá el dinero especificado al cliente.\\
-El cliente pagará su producto y el vendedor se lo entregará al cliente con su boleta correspondiente.\\
-Cada petición que hace el cliente al vendedor es una interacción con
-un controlador, esté a su vez entrega información sobre productos y solicita información al cliente mediante vistas.\\
-Se producirán cambios al modelo (ej: Cuando el vendedor le entrega
-un producto o la boleta al cliente) y estos son un efecto colateral a las peticiones realizadas al controlador.
+Esta forma permite al partido tener un orden en cuanto a la información que se transmite dentro de este y como finalidad del patrón evita que todos los militantes interactúen con todos.\\
+
+
+\title{\textbf{Anexo\\}}
+
+Repositorio del documento en \LaTeX:
+
+\url{https://github.com/AxelRodriguezE/Tarea3_Ayudantia_IngSoftware}
 
 \end{document}
